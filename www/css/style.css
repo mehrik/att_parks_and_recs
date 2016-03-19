@@ -7,6 +7,22 @@
   height: 100%;
 }
 
+/*.pane{
+	background: url("../img/blurredback.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}*/
+
+#park_img{
+	background: url("../img/parkImg.png")
+}
+
+#geoff{
+	background-color:black;
+}
+
+
 /** {
   outline: green thin dashed;
 }*/

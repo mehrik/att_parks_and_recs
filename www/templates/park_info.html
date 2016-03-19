@@ -10,16 +10,26 @@
 				
 				}
 			</style>
-			<div id="parkHeader" style="font-size: 110%;" id="description">
-				<a href="#/map"<i style="color: white; margin-right:20px;" class="icon ion-chevron-left"></i></a>
+			<div id="parkHeader" style="font-size: 100%;" id="description">
+			
+				<a href="#/map"<i style="color: white; margin-right:10px;" class="icon ion-chevron-left"></i></a>
 					
 					{{ info.name }}
+
+
 					{{ info.address }} {{ info.zip_code }}
 					
 
 			</div>
-            
-			<img style="height: 30vh;" src = "img/parkImg.png">
+            <style>
+				#parkImage{
+					background-image: url("img/parkImg.png");
+					height: 30vh;
+					width: 100%;
+				}
+			</style>
+			<div id = "parkImage"></div>
+			<!--<img style="height: 30vh;" src = "img/parkImg.png">-->
 
         </div>
 

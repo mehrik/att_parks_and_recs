@@ -1,12 +1,25 @@
 <ion-view view-title="Park Info">
     <ion-content class="has-footer">
-         <div  id="geoff" class="item item-image">
-            <img src = "../img/parkImg.png">
+         <div  id="imgHeader" class="item item-image">
+		 	<style>
+				#parkHeader{
+					position: absolute;
+					margin-top: 40%;
+					margin-left: 20px;
+					color: white;
+				
+				}
+			</style>
+			<div id="parkHeader" style="font-size: 200%;" id="description">
+				<a href="#/map"<i style="color: white; margin-right:20px;" class="icon ion-chevron-left"></i></a>
+				{{ info.name }}
+				{{ info.address }} {{ info.zip_code }}
+			</div>
+            
+			<img style="width: 100%;"src = "../img/parkImg.png">
+
         </div>
-        <div id="description">
-            {{ info.name }}
-            {{ info.address }} {{ info.zip_code }}
-        </div>
+
         <!-- <div class="list"> -->
             <div class="item item-divider">
                 Reviews

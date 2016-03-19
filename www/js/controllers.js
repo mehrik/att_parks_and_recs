@@ -58,6 +58,11 @@ angular.module('starter.controllers', [])
   $scope.info = JSON.parse(window.localStorage["park"]);
   console.log($scope.info);
 
+  $scope.hello = function() {
+    console.log("What the fuck");
+    $location.path('/map');
+  }
+
   var getAllReviews = function(info) {
     $http.get("http://mehrik-mbpro.local:5000/review/" + info.locid).success(function (reviews) {
       console.log(reviews);

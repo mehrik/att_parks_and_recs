@@ -7,6 +7,13 @@
   height: 100%;
 }
 
+#park_img{
+	background: url("../img/parkImg.png")
+}
+
+#geoff{
+	background-color:black;
+}
 /** {
   outline: green thin dashed;
 }*/

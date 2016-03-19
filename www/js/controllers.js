@@ -61,6 +61,7 @@ angular.module('starter.controllers', [])
   var getAllReviews = function(info) {
     $http.get("http://mehrik-mbpro.local:5000/review/" + info.locid).success(function (reviews) {
       console.log(reviews);
+      $scope.reviews = reviews;
     })
   }
 

@@ -6,9 +6,12 @@
         <button class="button icon ion-ios-compose-outline" ng-click="save()"></button>
     </div>
     <ion-content class="has-header">
-        <div class="list">
+        <div class="list list-inset">
             <label class="item item-input">
-                <textarea id="review_text" placeholder="Write a review"></textarea>
+                <input type="text" placeholder="Title" ng-model="review.title"></input>
+            </label>
+            <label class="item item-input">
+                <textarea id="review_text" placeholder="Write a review" ng-model="review.content"></textarea>
             </label>
         </div>
     </ion-content>

@@ -6,12 +6,12 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     // send this user name over to my server
     console.log($scope.user.name);
-    console.log($scope.user);
-    $http.post('http://mehrik-mbpro.local:5000/user', $scope.user).success(function (output) {
-      console.log(output);
+    $http.post('http://mehrik-mbpro.local:5000/user', $scope.user).success(function (user) {
+      console.log("this is the output", user);
+      window.localStorage["user"] = JSON.stringify(user);
     })
 
-    // $location.path('/map');
+    $location.path('/map');
   }
 })
 
@@ -53,20 +53,44 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ParkCtrl', function($scope, $location) {
+.controller('ParkCtrl', function($scope, $location, $http) {
   // Allow park_info.html to have access to current park selected
   $scope.info = JSON.parse(window.localStorage["park"]);
   console.log($scope.info);
+
+  var getAllReviews = function(info) {
+    $http.get("http://mehrik-mbpro.local:5000/review/" + info.locid).success(function (reviews) {
+      console.log(reviews);
+    })
+  }
+
+  getAllReviews($scope.info);
 })
 
-.controller('ReviewCtrl', function($scope, $location) {
+.controller('ReviewCtrl', function($scope, $location, $http) {
+  $scope.review = {}
+  console.log(window.localStorage["park"]);
+  console.log(window.localStorage["user"])
   $scope.exit = function() {
     console.log("Successfully exited from the Review Page")
     $location.path('/park_info');
   }
 
   $scope.save = function() {
-    console.log("You should have saved something here");
-    $location.path('/park_info');
+    $scope.review.park = JSON.parse(window.localStorage["park"]).locid;
+    $scope.review._user = JSON.parse(window.localStorage["user"]);
+    // console.log("You should have saved something here");
+    // console.log($scope.review);
+
+    // Creates a new review relative to the park
+    var link = "http://mehrik-mbpro.local:5000/review/" + $scope.review.park + "/create";
+    $http.post(link, $scope.review).success(function (output) {
+      if (!output.errors) {
+        console.log(output)
+        $location.path("/park_info");
+      } else {
+        console.log(output);
+      }
+    });
   }
 })

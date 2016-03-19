@@ -1,0 +1,16 @@
+<ion-view view-title="The map">
+  <ion-content scroll="false">
+      <map class='map' zoom="17">
+
+        <marker
+          clickable="true"
+          ng-click="{{showDetail(event)}}" 
+          icon="img/park-marker.png" 
+          position="current">
+        </marker>
+        <!-- <marker icon="img/park-marker.png" position="current"></marker> -->
+      </map>
+
+
+  </ion-content>
+</ion-view>

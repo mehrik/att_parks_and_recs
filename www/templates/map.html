@@ -1,0 +1,31 @@
+<ion-view view-title="The map">
+  <ion-content scroll="false">
+      <map 
+        class='map' 
+        zoom="15"
+        center="current">
+
+        <marker
+          clickable="true"
+          icon="img/me-marker.png"
+          position="current"
+          title="Hello">
+        </marker>
+
+        <marker
+          ng-repeat="park in parks"
+          clickable="true"
+          on-mousedown = "showDetail(event, {{park.locid}})"
+          icon="img/park-marker.png"
+          position="{{park.y_coord}}, {{park.x_coord}}">
+        </marker>
+      </map>
+      <div class="list" ng-repeat="park in parks">
+          <div class="item">
+              
+          <p>park.position</p>
+          </div>
+      </div>
+
+  </ion-content>
+</ion-view>

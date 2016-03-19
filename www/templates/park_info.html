@@ -1,7 +1,10 @@
 <ion-view view-title="Park Info">
     <ion-content class="has-footer">
         <div id="park_image">park image</div>
-        <div id="description">Description of Park</div>
+        <div id="description">
+            {{ info.name }}
+            {{ info.address }} {{ info.zip_code }}
+        </div>
         <!-- <div class="list"> -->
             <div class="item item-divider">
                 Reviews

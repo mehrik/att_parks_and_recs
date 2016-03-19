@@ -47,6 +47,7 @@ angular.module('starter', ['ionic', 'ngMap', 'ngCordova', 'starter.controllers',
   .state('park_info', {
     url:"/park_info",
     cache: false,
+    controller: "ParkCtrl",
     templateUrl: "templates/park_info.html"
   })
 

@@ -1,9 +1,18 @@
 angular.module('starter.controllers', [])
 
 
-.controller('LoginCtrl', function($scope, $location) {
+.controller('LoginCtrl', function($scope, $location, $http) {
+  $scope.user = {};
   $scope.login = function() {
-    console.log("this is working");
+    // send this user name over to my server
+    console.log($scope.user.name);
+    $http.get("http://mehrik-mbpro.local:5000/review/1000").success(function(output) {
+      console.log("Successs brig")
+    });
+    $http.post('http://mehrik-mbpro.local:5000/user', $scope.user).success(function (output) {
+      console.log(output);
+    })
+
     $location.path('/map');
   }
 })
@@ -23,8 +32,16 @@ angular.module('starter.controllers', [])
   $scope.showDetail = function (event, park_id) {
     console.log("It worked");
     console.log(park_id);
-    $location.path('/park_info');
-    $http.get("http://mehrik-mbpro.local:5000/test")
+    $http.get("https://data.seattle.gov/resource/ajyh-m2d3?$$app_token=mrNMSCsthoLkP5pilmE0zWv0K").success(function (result) {
+      for (var i = 0; i < result.length; i++) {
+        if (result[i].locid == park_id) {
+          // save current park information
+          window.localStorage["park"] = JSON.stringify(result[i]);
+          $location.path('/park_info');
+        }
+      }
+    })
+    // $http.get("http://mehrik-mbpro.local:5000/test")
   }
 
   // Get park information
@@ -38,6 +55,12 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('ParkCtrl', function($scope, $location) {
+  // Allow park_info.html to have access to current park selected
+  $scope.info = JSON.parse(window.localStorage["park"]);
+  console.log($scope.info);
+})
+
 .controller('ReviewCtrl', function($scope, $location) {
   $scope.exit = function() {
     console.log("Successfully exited from the Review Page")
@@ -49,32 +72,3 @@ angular.module('starter.controllers', [])
     $location.path('/park_info');
   }
 })
-
-// .controller('DashCtrl', function($scope, NgMap, $cordovaGeolocation) {
-
-// })
-
-// .controller('ChatsCtrl', function($scope, Chats) {
-//   // With the new view caching in Ionic, Controllers are only called
-//   // when they are recreated or on app start, instead of every page change.
-//   // To listen for when this page is active (for example, to refresh data),
-//   // listen for the $ionicView.enter event:
-//   //
-//   //$scope.$on('$ionicView.enter', function(e) {
-//   //});
-
-//   $scope.chats = Chats.all();
-//   $scope.remove = function(chat) {
-//     Chats.remove(chat);
-//   };
-// })
-
-// .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-//   $scope.chat = Chats.get($stateParams.chatId);
-// })
-
-// .controller('AccountCtrl', function($scope) {
-//   $scope.settings = {
-//     enableFriends: true
-//   };
-// });

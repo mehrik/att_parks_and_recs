@@ -14,6 +14,13 @@
 #geoff{
 	background-color:black;
 }
+
+.seattleParkView {
+  background-image:  url("../img/loginWlogo.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
 /** {
   outline: green thin dashed;
 }*/

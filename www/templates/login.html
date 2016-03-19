@@ -1,15 +1,11 @@
+
 <ion-view view-title="Check out these parks!">
-<ion-content>
-
-    <div class="list list-inset">
-        <label class="item item-input">
-            <input type="text" placeholder="Name" ng-model="user.name"></input>
-        </label>
-<!--         <label class="item item-input">
-            <input type="password" placeholder="Password"></input>
-        </label> -->
-        <button class="button button-block button-calm" ng-click="login()">Login</button>
+    <ion-content class="seattleParkView"></ion-content>
+    <div class="bar bar-subfooter">
+        <input type="text" placeholder="Name" ng-model="user.name"></input>
     </div>
-
-</ion-content>
+         
+    <div class="bar bar-footer bar-calm" ng-click="login()">    
+        <div class="title">Login</div>
+    </div>
 </ion-view>

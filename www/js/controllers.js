@@ -6,14 +6,12 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     // send this user name over to my server
     console.log($scope.user.name);
-    $http.get("http://mehrik-mbpro.local:5000/review/1000").success(function(output) {
-      console.log("Successs brig")
-    });
+    console.log($scope.user);
     $http.post('http://mehrik-mbpro.local:5000/user', $scope.user).success(function (output) {
       console.log(output);
     })
 
-    $location.path('/map');
+    // $location.path('/map');
   }
 })
 

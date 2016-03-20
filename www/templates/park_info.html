@@ -49,6 +49,11 @@
             <div class="item item-divider"></div>
         <!-- </div> -->
 <!--         <div id="reviews" class="list card"> -->
+            <div ng-if="reviews.length < 1">
+                <div class="item">
+                    <p>Be first the review this park!</p>
+                </div>
+            </div>
             <div ng-repeat="review in reviews">
                 <div class="card">
                     <div class="item item-divider">
